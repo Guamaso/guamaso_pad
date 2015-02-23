@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Guamaso Pad</title>
+        <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.3.0/codemirror.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+        
+  <style>
+    body {
+        margin:0;
+        padding: 0;
+        outline: none;
+        border: none;
+        background-color: #7F8385;
+    }
+    #firepad {
+      position: absolute;
+      top:6rem;
+      bottom:1rem;
+      left: 1rem;
+      right: 1rem;
+      height: auto;
+    }
+  </style>
+    </head>
+    <body class="container">
+        <header>
+            <h1>Guamaso Pad</h1>
+        </header>
+        <div id="firepad"></div>
+        <!-- Firebase -->
+        <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+
+        <!-- CodeMirror -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.3.0/codemirror.js"></script>
+
+        <!-- Firepad -->
+        <script src="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.min.js"></script>
+        <script>
+            var firepadRef = new Firebase('guanopad.firebaseio.com');
+            var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
+            var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+                { richTextShortcuts: true, defaultText: 'Hello, World!' });
+        </script>
+    </body>
+</html>
